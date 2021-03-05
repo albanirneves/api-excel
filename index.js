@@ -60,7 +60,7 @@ app.post('/api/plan', async (req, res) => {
         res.setHeader('Content-Type' ,'text/plain');
         res.status(200).send(fileBuffer.toString('base64'));
     } catch(error) {
-        res.status(200).json({ error: error.toString() });
+        res.status(400).json({ error: error.toString() });
     }
 })
 
