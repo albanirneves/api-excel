@@ -1,82 +1,99 @@
 (async () => {
-    //const API_URL = 'https://excel-creator.vercel.app/api/plan';
-    const API_URL = 'http://localhost:3000/api/plan';
+    const API_URL = 'https://excel-creator.vercel.app/api/plan';
     
     const jsonRequest = {
-        "font": { "name": "Calibri", "size": 11 },
+        //aqui vc pode colocar as celular que quer que aparece filtro
+        "autoFilter": {
+            "from": "A3",
+            "to": "C3"
+        },
+
+        //aqui é a fonte que se aplica a toda a planilha
+        //mas ela é sobrescrita se declarar novamente nas linhas ou célular
+        "font": { 
+            "name": "Calibri", 
+            "size": 11 
+        },
+
+        //largura das colunas
         "columns": [
-            { "width": 11 },
+            { "width": 20 },
             { "width": 30 },
-            { "width": 13 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 11 },
-            { "width": 15 },
-            { "width": 15 },
-            { "width": 15 },
             { "width": 18 },
-            { "width":  8 },
-            { "width": 18 },
-            { "width": 18 },
-            { "width": 18 },
-            { "width": 18 },
-            { "width": 10 },
-            { "width": 10 },
-            { "width": 10 },
-            { "width": 10 },
-            { "width": 50 }
+            { "width": 20 },
+            { "width": 20 }
         ],
+
+        //lista de linhas
         "rows": [
             {
-                "height": 33,
-                "font": { "name": "Calibri", "size": 14, "bold": true },
-                "alignment": { "vertical": "middle", "horizontal": "center" },
+                "height": 33,//altura da linha
+                "hidden": false,//true a coluna fica escondida
+                "font": { 
+                    "name": "Calibri", 
+                    "size": 14, 
+                    "bold": true, //negrito
+                    "underline": true, //sublinhado
+                    "italic": true, //italico
+
+                    //aqui vc manda a cor em hexadecimal
+                    //para facilitar visite: http://www.color-hex.com/
+                    "color": { "argb": "FF00FF" }  
+                },
+
+                //alinhamento da linha, também pode ser declarado nas célular individuais
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "center" 
+                },
+
+                //lista de células da linha
                 "cells": [
                     {
-                        "ref": "A1:X1",
-                        "value": "VISITA DE INSPEÇÃO TÉCNICA DO PAVIMENTO"
+                        //se colocar um intervalo, as células serão mescladas
+                        "ref": "A1:E1",
+                        "value": "VISITA DE INSPEÇÃO",
+
+                        //opcao de borda comum
+                        "border": {
+                            "top"   : { "style": "thin" },
+                            "left"  : { "style": "thin" },
+                            "bottom": { "style": "thin" },
+                            "right" : { "style": "thin" }
+                        }
                     }
                 ]
             },
             {
                 "height": 15,
-                "font": { "bold": true },
-                "alignment": { "vertical": "middle", "horizontal": "center" },
+                "font": { 
+                    "bold": true,
+                    "strike": true//tachado
+                },
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "center" 
+                },
                 "cells": [
                     {
-                        "ref": "A2:G2",
-                        "value": "INFORMAÇÕES DO TRECHO"
-                    },
-                    {
-                        "ref": "H2:J2",
+                        "ref": "A2:C2",
                         "value": "POSIÇÃO FOTO"
                     },
                     {
-                        "ref": "K2:O2",
-                        "value": "INFORMAÇÕES PISTA"
-                    },
-                    {
-                        "ref": "P2:S2",
-                        "value": "COMPOSIÇÃO DO PAVIMENTO"
-                    },
-                    {
-                        "ref": "T2:W3",
+                        "ref": "D2:E2",
                         "value": "DEFEITOS NO PAVIMENTO"
-                    },
-                    {
-                        "ref": "X2:X3",
-                        "value": "LINK FOTO"
                     }
                 ]
             },
             {
                 "height": 15,
-                "font": { "bold": true },
-                "alignment": { "vertical": "middle", "horizontal": "center" },
+                "font": { 
+                    "bold": true 
+                },
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "center" 
+                },
                 "cells": [
                     {
                         "ref": "A3",
@@ -97,72 +114,22 @@
                     {
                         "ref": "E3",
                         "value": "Lado"
-                    },
-                    {
-                        "ref": "F3",
-                        "value": "Pista"
-                    },
-                    {
-                        "ref": "G3",
-                        "value": "Faixa"
-                    },
-                    {
-                        "ref": "H3",
-                        "value": "Nº Foto"
-                    },
-                    {
-                        "ref": "I3",
-                        "value": "Km Foto"
-                    },
-                    {
-                        "ref": "J3",
-                        "value": "Estaca Foto"
-                    },
-                    {
-                        "ref": "K3",
-                        "value": "Largura Faixa 1"
-                    },
-                    {
-                        "ref": "L3",
-                        "value": "Largura Faixa 2"
-                    },
-                    {
-                        "ref": "M3",
-                        "value": "Acostamento"
-                    },
-                    {
-                        "ref": "N3",
-                        "value": "Larg. Acostamento"
-                    },
-                    {
-                        "ref": "O3",
-                        "value": "Seção"
-                    },
-                    {
-                        "ref": "P3",
-                        "value": "Revestimento"
-                    },
-                    {
-                        "ref": "Q3",
-                        "value": "Base"
-                    },
-                    {
-                        "ref": "R3",
-                        "value": "Sub-base"
-                    },
-                    {
-                        "ref": "S3",
-                        "value": "Subleito"
                     }
                 ]
             },
             {
                 "height": 15,
-                "alignment": { "vertical": "middle", "horizontal": "left" },
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "left" 
+                },
                 "cells": [
                     {
                         "ref": "A4",
-                        "value": "120EBA0001"
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
+                        "value": "01/01/2021"
                     },
                     {
                         "ref": "B4",
@@ -170,99 +137,160 @@
                     },
                     {
                         "ref": "C4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 0
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
+                        "value": 0//valores numericos serão tratados como numeros apenas sem aspas
                     },
                     {
                         "ref": "D4",
-                        "alignment": { "horizontal": "right" },
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
                         "value": 0
                     },
                     {
                         "ref": "E4",
                         "value": "Direito"
+                    }
+                ]
+            },
+            {
+                "height": 15,
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "left" 
+                },
+                "cells": [
+                    {
+                        "ref": "A5",
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
+                        "value": "Teste"
                     },
                     {
-                        "ref": "F4",
-                        "value": "Dupla"
+                        "ref": "B5",
+                        "value": "Santa Terezinha - Elísio Medrado"
                     },
                     {
-                        "ref": "G4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 1
+                        "ref": "C5",
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
+                        "value": 0
                     },
                     {
-                        "ref": "H4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 1
+                        "ref": "D5",
+                        "alignment": { 
+                            "horizontal": "right" 
+                        },
+                        "value": 0
                     },
                     {
-                        "ref": "I4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 0.523
+                        "ref": "E5",
+                        "value": "Direito"
+                    }
+                ]
+            },
+            {
+                "height": 15,
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "left" 
+                },
+                "cells": [
+                    {
+                        "ref": "A7",
+                        "value": "Valor"
                     },
                     {
-                        "ref": "J4",
-                        "value": "26+03"
+                        "ref": "C7",
+                        "value": "bordas",
+                        
+                        //bordas grossas
+                        "border": {
+                            "top"   : { "style": "medium" },
+                            "left"  : { "style": "medium" },
+                            "bottom": { "style": "medium" },
+                            "right" : { "style": "medium" }
+                        }
                     },
                     {
-                        "ref": "K4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 3.6
+                        "ref": "E7",
+                        "value": "bordas",
+
+                        //bordas coloridas
+                        "border": {
+                            "top"   : {"style": "thin", "color": { "argb": "FF00FF" } },
+                            "left"  : {"style": "thin", "color": { "argb": "FF00FF" } },
+                            "bottom": {"style": "thin", "color": { "argb": "FF00FF" } },
+                            "right" : {"style": "thin", "color": { "argb": "FF00FF" } }
+                        }
                     },
                     {
-                        "ref": "L4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 3.6
+                        "ref": "G7",
+                        "value": "bordas",
+
+                        //bordas duplas
+                        "border": {
+                            "top"   : {"style": "double", "color": { "argb": "00FFFF" } },
+                            "left"  : {"style": "double", "color": { "argb": "00FFFF" } },
+                            "bottom": {"style": "double", "color": { "argb": "00FFFF" } },
+                            "right" : {"style": "double", "color": { "argb": "00FFFF" } }
+                        }
                     },
                     {
-                        "ref": "M4",
-                        "value": "Presente"
+                        "ref": "I7",
+                        "value": "bordas",
+
+                        //bordas pontilhadas
+                        "border": {
+                            "top"   : {"style": "mediumDashed" },
+                            "left"  : {"style": "mediumDashed" },
+                            "bottom": {"style": "mediumDashed" },
+                            "right" : {"style": "mediumDashed" }
+                        }
+                    }
+                ]
+            },
+            {
+                "height": 15,
+                "alignment": { 
+                    "vertical": "middle", 
+                    "horizontal": "left" 
+                },
+                "cells": [
+                    {
+                        "ref": "A9",
+                        "value": "Valor"
                     },
                     {
-                        "ref": "N4",
-                        "alignment": { "horizontal": "right" },
-                        "value": 2.5
+                        "ref": "C9",
+                        "value": "preencher",
+
+                        //cor da fonte
+                        "font": {
+                            "color": { "argb": "FF00FF" }
+                        },
+
+                        //cor de fundo, só colocar a cor hexadecimal
+                        "fill": {
+                            "type"   : "pattern",
+                            "pattern": "solid",
+                            "bgColor": { "argb": "8B0000" }
+                        }
                     },
                     {
-                        "ref": "O4",
-                        "value": "Aterro"
-                    },
-                    {
-                        "ref": "P4",
-                        "value": "CBUQ"
-                    },
-                    {
-                        "ref": "Q4",
-                        "value": "Cascalho Laterítico"
-                    },
-                    {
-                        "ref": "R4",
-                        "value": "Cascalho Quartzoso"
-                    },
-                    {
-                        "ref": "S4",
-                        "value": "Cascalho Quartzoso"
-                    },
-                    {
-                        "ref": "T4",
-                        "value": "ATC"
-                    },
-                    {
-                        "ref": "U4",
-                        "value": "Exsudação"
-                    },
-                    {
-                        "ref": "V4",
-                        "value": "Panela"
-                    },
-                    {
-                        "ref": "W4",
-                        "value": ""
-                    },
-                    {
-                        "ref": "X4",
-                        "value": "http://..."
+                        "ref": "E9",
+                        //imagem vc tem duas opcoes, aqui vc pode mandar o link da imagem ou
+                        //pode tambem converter a imagem pra base64 e mandar o texto aqui
+                        //no lugar do link
+                        "image": {
+                            "link": "https://img.ibxk.com.br/2020/01/30/30021141299110.jpg",
+                            "width": 250, 
+                            "height": 100
+                        }
                     }
                 ]
             }
